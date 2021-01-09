@@ -14,7 +14,6 @@ class UserSignUp extends Component{
   setForm(e)
   {
     const {name, value} = e.target;
-    console.log(value);
     this.setState({
         [name] : value
     });
@@ -32,8 +31,9 @@ class UserSignUp extends Component{
       })
       .then(response=> response.json())
       .then(response=>{
-        alert(response)
+        alert("Thank you for signing up!")
       })
+      .catch(err=> alert(err))
   }
 
 startExploring = () => {
