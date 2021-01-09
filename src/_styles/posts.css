@@ -1,0 +1,261 @@
+.single-post {
+    margin-bottom: 10px;
+    border: 1px solid #fff;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding:10px;
+    border-bottom: 1px solid #414141;
+    background-color:#fff;
+}
+
+.results-list h2{
+    color:#fff;
+    font-size:18px;
+  }
+
+.top-post-icons {
+    display: flex;
+    justify-content: space-between;
+    width:100%;
+}
+
+.post-span {
+    padding-bottom: 10px;
+    font-size:20px;
+}
+
+.post-title {
+    font-size: 25px;
+    text-align: center;
+}
+
+.post-artist {
+    text-align: center;
+}
+
+.post-info{
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.post-content{
+    text-align:center;
+}
+
+.book-post{
+    border-color:#b8b8b8;
+}
+
+.lifestyle-post{
+    border-color:#c5c5c5;
+}
+.recipe-post{
+    border-color:#a3a3a3;
+}
+
+.event-post{
+    border-color:#e2e2e2;
+}
+.podcast-post{
+    border-color:#9b8997;
+}
+
+.post-info a{
+    color:#000;
+    text-decoration: underline;
+}
+
+.post-icons-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.post-span{
+    width:100%;
+}
+
+.post-icon, .post-username {
+    padding-bottom:20px;
+}
+
+.post-username, .connect-icon {
+   width:100px;
+   text-align:right;
+   padding:0px 10px;
+}
+
+.post-username{
+    padding-right:3px;
+}
+
+.post-icon{
+    display: inline-block;
+    background-color: transparent;
+    border-width:0;
+}
+
+.post-icon svg{
+    font-size:28px;
+}
+
+.post-icons-buttons svg{
+    margin: 15px auto;
+    display: block;
+}
+
+.bookmark-button{
+    width: 23px;
+    text-align: right;
+    padding: 0px;
+    margin:0;
+    position:relative;
+}
+
+.bookmark-button:hover, .connection-button:hover{
+    background-color: transparent;
+}
+
+.bookmark-button svg{
+    margin:auto;
+    display:block;
+}
+
+.post-icon svg path{
+    fill:#152604;
+}
+
+.lifestyle-post svg path{
+    fill:#bacbcc;
+}
+.event-post svg path{
+    fill:#cac5ca;
+}
+.recipe-post svg path{
+    fill:#480000;
+}
+.podcast-post svg path{
+    fill:#391832;
+}
+.book-post svg path{
+    fill:#1f4008;
+}
+
+.bookmarked .bookmark-button svg path{
+    fill: #e4dbe4;
+}
+
+.single-post .bookmark-button svg path, .single-post svg path{
+    fill:#480000;
+}
+
+.single-post .bookmark-button:hover svg path, .single-post svg path{
+    fill:#f2b705;
+}
+
+.single-post.not-bookmarked .bookmark-button:hover svg path,.single-post svg path{
+    fill:#8C0000;
+}
+
+.connection-button.delete-icon svg path,.bookmark-button.delete-icon svg path{
+    fill:#d97700;
+}
+
+.post-image img {
+    max-width: 275px;
+    margin: auto;
+    display: block;
+    border-radius: 3px;
+    border: 2px solid black;
+}
+
+.user-info {
+    width: 200px;
+    text-align:right;
+    padding-bottom: 35px;
+}
+
+.delete-post-area{
+    position: relative;
+}
+
+.are-you-sure-box{
+    top:unset;
+    bottom: 0;
+    background-color:#f2b705;
+    color:#fff;
+    text-align:center;
+}
+
+@media only screen and (min-width:400px){
+.post-image img {
+    max-width: 350px;
+}
+}
+
+
+@media only screen and (min-width:760px){
+    .post-icon svg {
+        font-size: 35px;
+    }
+
+    .bookmark-button {
+        width: 26px;
+    }
+
+    .connection-button {
+        width: 50px;
+    }
+
+    .post-image img {
+        max-width: 500px;
+    }
+
+    .delete-button{
+        font-size:1em;
+    }
+
+    .search-row button, .search-row button[type="submit"] {
+        height: 32px;
+    }
+
+    .search-row .button-reset {
+        height: 25px;
+    }
+
+    .single-post {
+        padding: 26px;
+        max-width: 500px;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+
+    .are-you-sure-box{
+        width:400px;
+        font-size: .8em;
+    }
+
+    .post-info {
+        margin-bottom: 25px;
+    }
+    .post-image img {
+        max-width: 450px;
+    }
+
+}/*end of MQ min760*/
+
+@media only screen and (min-width:960px){
+
+    .search-row button, .search-row button[type="submit"] {
+        height: 35px;
+    }
+
+    .search-row .button-reset {
+        height: 30px;
+    }
+
+    
+
+}

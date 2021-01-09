@@ -1,0 +1,142 @@
+.header-home{
+    height:100vh;
+    position:relative;
+}
+
+.header-home h1{
+    font-size:3.25em;
+    padding-top:2.25em;
+    font-family: 'Nunito', sans-serif;
+}
+
+.home main{
+    margin-bottom:0;
+    background-color:#391832;
+}
+
+.tagline{
+  font-size:1.5em;
+  font-weight: 600;
+  margin-block-start: 0em;
+}
+
+.tagline, .header-home h1{
+    color:#480000;
+    /*color:#fff;*/
+}
+
+.box{
+    border:1px solid #000;
+    width:260px;
+    border-radius:5px;
+    position:absolute;
+    top:15vh;
+    left:50%;
+    transform: translateX(-50%);
+    background-color:#fff;
+    background-color: #fff;
+    padding: 30px 15px;
+    z-index:20;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: #000;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    position:absolute;
+    top:2px;
+    right:6px;
+    width:15px;
+}
+
+.box button:hover{
+    background-color:#40004b;
+    color:#fff;
+}
+
+.box p{
+  color:#391832;
+}
+
+.home-nav-links{
+    display:flex;
+    justify-content: flex-end;
+    padding-top:5px;
+  }
+  
+  .home-nav-links button{
+    margin: 0px 10px;
+  
+  }
+
+.home .nav-link{
+    background-color:transparent;
+    color:#391832;
+    border:0px solid #391832;
+    border-radius:0px;
+    padding: 6px;
+    padding-bottom:2px;
+    margin:0;
+    margin-right: 10px;
+    border-bottom:1.5px solid #391832;
+    font-size:1.25em;
+}
+
+.home .nav-link:hover{
+    color: #fff;
+    font-weight:500;
+    border-bottom:1px solid #038990;
+
+}
+.aipdietPic{
+    justify-content: right;
+}
+.about h2, .learnmore h2{
+    color:white;    
+}
+.about p, .learnmore p{
+    color:white;
+}
+@media only screen and (min-width:760px){
+
+.header-home h1 {
+    padding-top: 3.25em;
+}
+
+.box{
+    top: 25vh;
+    width: 450px;
+    width: 500px;
+    font-size: 1.25em;
+ 
+}
+
+.home main{
+    padding-bottom: 30px;
+}
+
+}/*end MQ min760*/
+
+@media only screen and (min-width:960px){
+
+body {
+    font-size: 15px;
+}
+
+.header-home h1 {
+    padding-top: 2.25em;
+}
+
+.home .nav-link, .box{
+    font-size: 1em;
+}
+
+.box{
+    top: 32vh;
+}
+}
