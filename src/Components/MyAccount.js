@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Nav from './Nav';
-import UserSignUp from "./UserSignUp"
+import UserSignUp from "./UserSignUp";
+import {BASE_URL} from "../../src/config";
+import {BASE_URL_FRONTEND} from "../../src/config";
 class MyAccount extends Component{
     state = {
         isBoxVisible:false,
@@ -24,7 +26,7 @@ class MyAccount extends Component{
    }
     signIn = (e) =>  { 
         e.preventDefault();
-        fetch('http://localhost:8000/api/users/checkuser/'+this.state.username, {
+        fetch(BASE_URL+'/users/checkuser/'+this.state.username, {
           method:'post',
           headers:{'Content-Type' : 'application/json'},
           body:JSON.stringify({
@@ -33,7 +35,7 @@ class MyAccount extends Component{
         })
         .then(response=> response.json())
         .then(response=>{
-            if(response) window.location.href = "http://localhost:3000/dashboard";
+            if(response) window.location.href = BASE_URL_FRONTEND+"/dashboard";
         })
         .catch(err=> alert(err))
     }   

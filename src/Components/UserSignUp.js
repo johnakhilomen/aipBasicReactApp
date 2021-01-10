@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
+import {BASE_URL} from "../../src/config";
+import {BASE_URL_FRONTEND} from "../../src/config";
 class UserSignUp extends Component{
   state = {
     isBoxVisible:false,
@@ -19,7 +21,7 @@ class UserSignUp extends Component{
   }
   signupUser = (e) =>  { 
       e.preventDefault();
-      fetch('http://localhost:8000/api/users', {
+      fetch(BASE_URL+'/users', {
         method:'post',
         headers:{'Content-Type' : 'application/json'},
         body:JSON.stringify({
@@ -31,7 +33,7 @@ class UserSignUp extends Component{
       .then(response=> response.json())
       .then(response=>{
         alert("Thank you for signing up!");
-        window.location.href = "http://localhost:3000/my-account";
+        window.location.href = BASE_URL_FRONTEND+"/my-account";
       })
       .catch(err=> alert(err))
   }
