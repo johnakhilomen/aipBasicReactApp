@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-
 class UserSignUp extends Component{
   state = {
     isBoxVisible:false,
@@ -31,7 +30,8 @@ class UserSignUp extends Component{
       })
       .then(response=> response.json())
       .then(response=>{
-        alert("Thank you for signing up!")
+        alert("Thank you for signing up!");
+        window.location.href = "http://localhost:3000/my-account";
       })
       .catch(err=> alert(err))
   }

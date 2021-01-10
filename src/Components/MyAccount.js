@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import Nav from './Nav';
-
+import UserSignUp from "./UserSignUp"
 class MyAccount extends Component{
     state = {
-        isBoxVisible:false
+        isBoxVisible:false,
+        username: "",
+        password: ""
     }
     BetaVersionPopUp=(e)=>{
         e.preventDefault();
@@ -11,8 +13,32 @@ class MyAccount extends Component{
     }
     closeWindow=()=>{
         this.setState({ isBoxVisible: false });
-    }    
-    render(){       
+    } 
+    setForm(e)
+   {
+    const {name, value} = e.target;
+    console.log(value);
+    this.setState({
+        [name] : value
+    });
+   }
+    signIn = (e) =>  { 
+        e.preventDefault();
+        fetch('http://localhost:8000/api/users/checkuser/'+this.state.username, {
+          method:'post',
+          headers:{'Content-Type' : 'application/json'},
+          body:JSON.stringify({
+            password: this.state.password 
+          })
+        })
+        .then(response=> response.json())
+        .then(response=>{
+            if(response) window.location.href = "http://localhost:3000/dashboard";
+        })
+        .catch(err=> alert(err))
+    }   
+    render(){      
+        let signUp = new UserSignUp(); 
         return(
           <div className="account-page">
             <Nav pageType={'interior'}/>
@@ -20,19 +46,19 @@ class MyAccount extends Component{
               <p>Since this is still the Beta version of the app, you cannot update account information. Please check back soon to be able to sign-up and update your account whenever!</p>
               <button className="button" onClick={this.closeWindow}>Close</button>
               </div>             
-                <form className="update-account-form" onSubmit={e=>this.BetaVersionPopUp(e)}>
+                <form className="update-account-form" onSubmit={e=>this.signIn(e)}>
                     <h2>My Account</h2>                    
                     <p>Please enter your username and password to SignIn.</p>
                     
                     <div className="form-field-group">
                         <label htmlFor="username">UserName</label>
-                        <input placeholder="user123" type="username" name='username' id='username'/>
+                        <input placeholder="user123" type="username" name='username' id='username' onChange={(e)=>this.setForm(e)}/>
                     </div>
                     <div className="form-field-group">
                         <label htmlFor="password">Password</label>
-                        <input placeholder="*******" type="password" name='password' id='password'/>
+                        <input placeholder="*******" type="password" name='password' id='password' onChange={(e)=>this.setForm(e)}/>
                     </div>
-                    <button type="submit" onClick={this.BetaVersionPopUp}>SignIn</button>                    
+                    <button type="submit">SignIn</button>                    
                    </form> 
                                                  
             </div>
