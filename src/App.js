@@ -193,10 +193,10 @@ componentDidMount(){
       <div className="App">
         <Context.Provider value={contextValue}>
           <Route exact path="/" component={Home}/>
-          <Route exact path="/dashboard" component={Dashboard}/>
+          <Route exact path="/:username/dashboard" component={Dashboard}/>
           <Route exact path="/bookmarks" component={BookmarkPage}/>
           <Route exact path="/user-signup" component={UserSignUp}/>
-          <Route exact path="/new-post" component={NewPost}/>
+          <Route exact path="/:username/new-post" component={NewPost}/>
           <Route exact path="/my-account" component={MyAccount}/>        
         </Context.Provider>
       </div>

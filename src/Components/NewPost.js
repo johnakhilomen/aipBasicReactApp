@@ -9,7 +9,8 @@ import ValidationError from './ValidationError'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarAlt, faIdCard, faSmile  } from '@fortawesome/free-regular-svg-icons';
 import { faPodcast, faSeedling, faBookOpen,faUser, faHeartbeat} from '@fortawesome/free-solid-svg-icons';
-
+import {BASE_URL} from "../../src/config";
+import {BASE_URL_FRONTEND} from "../../src/config";
 
 class NewPost extends Component{
   static contextType = Context;
@@ -26,7 +27,8 @@ class NewPost extends Component{
       by:{value:"",touched:false},
       link:{value:"",touched:false},
       content:{value:"",touched:false},
-      post_image:{value:"",touched:false, file:""}}
+      post_image:{value:"",touched:false, file:""}},
+      user: this.props.match.params.username
     }//end of state
   }
   //updates the fields displayed depending on the type of post
@@ -233,6 +235,34 @@ fetch(url, {
   }
 }      
 
+postData()
+{
+    console.log("Clicked!")
+    const user = this.props.match.params.username;
+    console.log(user);
+    const {inputs, fieldType}=this.state; 
+    //user_id, title, link, start_date,by,content, post_type
+    console.log(BASE_URL+'/posts/'+user);
+    fetch(BASE_URL+'/posts/'+user, {
+      method:'post',
+      headers:{'Content-Type' : 'application/json'},
+      body:JSON.stringify({
+        post_type:fieldType,
+        title:inputs.title.value,
+        link:inputs.link.value,
+        content:inputs.content.value,
+        by:inputs.by.value,
+        image_path:'' 
+      })
+    })
+    .then(response=> response.json())
+    .then(response=>{
+        console.log(response)
+      alert("Thank you for your post!");
+      //window.location.href = BASE_URL_FRONTEND+"/my-account";
+    })
+    .catch(err => alert(err))
+}
 render(){
     const { areTypeSpecificFieldsVisible } = this.state;
     const contentError = this.validateContent();
@@ -241,10 +271,10 @@ render(){
     return(
         <div className="new-post form-page">
             <header>
-                <Nav pageType={'interior'}/>
+                <Nav pageType={'interior'} user={this.state.user}/>
                 <FilterButtons
                     buttonInfo={[                    
-                    {aria_label:'my posts',icon_type:faUser, link:'/dashboard', display_change:'user', tooltipMessage:'view all your posts',tooltipClass:'bottom-farright'},
+                    {aria_label:'my posts',icon_type:faUser, link:`/${this.state.user}/dashboard`, display_change:'user', tooltipMessage:'view all your posts',tooltipClass:'bottom-farright'},
                     {aria_label:'my account',icon_type:faIdCard, link:'/my-account',display_change:'all', tooltipMessage:'signin to your account',tooltipClass:'bottom-farright'},                    
                     ]}                
                 />
@@ -318,10 +348,8 @@ render(){
                         
                     <div className="form-buttons button-row">    
                         <button 
-                            type="submit"
-                            disabled={
-                            this.state.submitDisabled
-                            }
+                            type="button"
+                            onClick={()=>this.postData()}
                         >
                             Post</button>
                         <button type="reset">Cancel</button>

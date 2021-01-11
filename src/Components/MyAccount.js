@@ -35,7 +35,7 @@ class MyAccount extends Component{
         })
         .then(response=> response.json())
         .then(response=>{
-            if(response) window.location.href = BASE_URL_FRONTEND+"/dashboard";
+            if(response) window.location.href = BASE_URL_FRONTEND+"/"+this.state.username+"/dashboard";
         })
         .catch(err=> alert(err))
     }   
