@@ -12,6 +12,13 @@ class ResultList extends Component{
       let currentDisplay= this.context.currentDisplay;
       let typeOfPost = '';
 
+      let postde = filteredResults && filteredResults.length > 0 ?
+      filteredResults.map((post, i) => 
+      <SinglePost 
+      key={i}{...post}
+      postInfo = {post}
+      postsToDisplay={this.props.postsToDisplay}/>) : <span></span>
+
         if(this.props.postsToDisplay==='posts'){
           typeOfPost = this.context.currentDisplay.dashboard.current_post_type
         }
@@ -24,11 +31,7 @@ class ResultList extends Component{
       <section className="results-list">   
         {this.props.postsToDisplay==='posts'? <h2>You are viewing {typeOfPost} posts {this.context.currentDisplay.user_posts_displayed} </h2> : <h2>Your Bookmarks</h2>}           
         <ul className="result-list">
-          {filteredResults.map((post, i) => 
-          <SinglePost 
-          key={i}{...post}
-          postInfo = {post}
-          postsToDisplay={this.props.postsToDisplay}/>)}
+          {postde}
         </ul>
       </section>
     )

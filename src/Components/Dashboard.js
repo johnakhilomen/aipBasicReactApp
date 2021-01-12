@@ -37,7 +37,7 @@ class Dashboard extends Component{
           <main>          
             <ResultList
             heading = {'Posts'}
-            postsToDisplay = {'posts'}
+            postsToDisplay = {this.state.posts}
             posts = {this.state.posts}/>
           </main>
           <footer className="copyright">
