@@ -50,13 +50,13 @@ startExploring = () => {
                 <form method="post" className="signup-form" onSubmit={e=>this.signupUser(e)}>
                 <h2>Sign-up to begin your AIP journey!</h2>
                 <label htmlFor="first-name">Full Name</label>
-                <input placeholder='Full Name' type="text" name='fullname' id='fullname' 
+                <input placeholder='Full Name' type="text" name='fullname' required id='fullname' 
                 onChange={e=>this.setForm(e)}/>               
                 <label htmlFor="last-name">UserName</label>
-                <input placeholder="UserName" type='text' name='username' id='username' 
+                <input placeholder="UserName" type='text' name='username' required id='username' 
                  onChange={e=>this.setForm(e)} />                
                 <label htmlFor="password">Password</label>
-                <input placeholder="*******" type="password" name='password' id='password' 
+                <input placeholder="*******" type="password" name='password' required id='password' 
                  onChange={e=>this.setForm(e)}/>
                 <button type="submit">Sign Up</button>
                 <button type="learn-more" onClick={this.startExploring}>Learn More</button>

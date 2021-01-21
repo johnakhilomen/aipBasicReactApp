@@ -130,7 +130,7 @@ class SinglePost extends Component{
                     
                 </div>
                 <div className="post-icons-buttons">
-                {bookmarkButton}
+              
                 </div>
                 {button}
                 {form}

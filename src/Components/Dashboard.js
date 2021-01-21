@@ -41,7 +41,6 @@ class Dashboard extends Component{
             posts = {this.state.posts}/>
           </main>
           <footer className="copyright">
-          
           </footer>
         </div>
       )
