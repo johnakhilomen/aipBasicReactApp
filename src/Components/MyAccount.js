@@ -3,6 +3,10 @@ import Nav from './Nav';
 import UserSignUp from "./UserSignUp";
 import {BASE_URL} from "../../src/config";
 import {BASE_URL_FRONTEND} from "../../src/config";
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
+
+
 class MyAccount extends Component{
     state = {
         isBoxVisible:false,
@@ -28,14 +32,21 @@ class MyAccount extends Component{
         e.preventDefault();
         fetch(BASE_URL+'/users/checkuser/'+this.state.username, {
           method:'post',
-          headers:{'Content-Type' : 'application/json'},
+          headers:{
+              'Content-Type' : 'application/json'
+            },
           body:JSON.stringify({
             password: this.state.password 
           })
         })
         .then(response=> response.json())
         .then(response=>{
-            if(response) window.location.href = BASE_URL_FRONTEND+"/"+this.state.username+"/dashboard";
+            if(response) 
+            {
+                console.log(response.token);
+                cookies.set('token', response.token, { path: '/' });
+                window.location.href = BASE_URL_FRONTEND+"/"+this.state.username+"/dashboard";
+            }
         })
         .catch(err=> alert(err))
     }   

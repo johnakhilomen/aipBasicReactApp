@@ -3,6 +3,8 @@ import Nav from './Nav';
 import ResultList from './ResultList';
 import Context from '../Context';
 import {BASE_URL} from "../../src/config";
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 class Dashboard extends Component{
   state = {
@@ -14,8 +16,15 @@ class Dashboard extends Component{
     this.setState({
       user : user
     })
-    console.log(user)
-    fetch(BASE_URL+'/posts/'+user)
+    console.log(user);
+    console.log(cookies.get('token'))
+    fetch(BASE_URL+'/posts/'+user, {
+      method:'get',
+      headers:{
+          'Content-Type' : 'application/json',
+          "Authorization": cookies.get('token')
+        }
+      })
     .then(response=> response.json())
     .then(response=>{
       console.log(response)

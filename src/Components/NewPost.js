@@ -275,7 +275,6 @@ render(){
                 <FilterButtons
                     buttonInfo={[                    
                     {aria_label:'my posts',icon_type:faUser, link:`/${this.state.user}/dashboard`, display_change:'user', tooltipMessage:'view all your posts',tooltipClass:'bottom-farright'},
-                    {aria_label:'my account',icon_type:faIdCard, link:'/my-account',display_change:'all', tooltipMessage:'signin to your account',tooltipClass:'bottom-farright'},                    
                     ]}                
                 />
             </header>
